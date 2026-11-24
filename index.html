@@ -862,6 +862,49 @@ body.lp-lock{overflow:hidden}
 .L.m .lfam-ph .im{background-position:52% 12%}
 .L.m .lfam h2{font-size:28px}
 .L.m .lfam-n b{font-size:15.5px}
+
+/* ===== burger + drawer (site preview) ===== */
+.browser{position:relative}
+.s-burger{display:none;width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px;flex:0 0 42px}
+.s-burger span{display:block;width:18px;height:1.6px;background:#F4F1EA;border-radius:2px}
+.mobile .s-burger{display:flex}
+.mobile .s-nav{gap:10px}
+.mobile .s-call{font-size:0!important;padding:0!important;width:42px;height:42px;justify-content:center;margin-left:auto}
+.mobile .s-call i{display:none}
+.mobile .s-call::before{content:"";width:18px;height:18px;background:#111;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z'/%3E%3C/svg%3E") center/contain no-repeat}
+.s-menu span{cursor:pointer}
+.s-menu span:hover{color:var(--oro-l)}
+.s-drawer{position:absolute;left:0;right:0;bottom:0;top:42px;z-index:60;background:radial-gradient(ellipse at 80% 0%,rgba(201,162,39,.22),transparent 55%),#0B0B0B;color:#F4F1EA;padding:22px 24px 28px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .35s,transform .45s cubic-bezier(.2,.7,.2,1),visibility .35s}
+.s-drawer.open{opacity:1;visibility:visible;transform:none}
+.sd-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.sd-top .logo{width:120px}
+.sd-x{width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font-size:16px;cursor:pointer}
+.sd-links{display:flex;flex-direction:column;overflow-y:auto}
+.sd-links a{font-family:var(--title);font-size:30px;line-height:1.15;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);cursor:pointer;color:#F4F1EA;text-decoration:none;opacity:0;transform:translateX(-12px);transition:.45s}
+.s-drawer.open .sd-links a{opacity:1;transform:none}
+.sd-links a:hover{color:var(--oro-l)}
+.sd-call{margin-top:auto;display:block;text-align:center;background:linear-gradient(180deg,var(--oro-l),var(--oro));color:#111;font-weight:800;text-decoration:none;border-radius:99px;padding:15px;font-size:15px}
+.sd-note{text-align:center;font-size:12px;color:#a9a397;margin-top:8px}
+.browser.fs .s-drawer{top:47px}
+.browser.fs.mobile{width:min(420px,100vw)}
+@media(max-width:500px){.browser.fs.mobile{left:0;right:0;width:100vw;transform:none;box-shadow:none}}
+/* ===== burger (presentation nav) ===== */
+.navburger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px;margin-left:auto}
+.navburger span{display:block;width:20px;height:1.8px;background:#F4F1EA;border-radius:2px;transition:.3s}
+nav.top.open .navburger span:nth-child(1){transform:translateY(6.8px) rotate(45deg)}
+nav.top.open .navburger span:nth-child(2){opacity:0}
+nav.top.open .navburger span:nth-child(3){transform:translateY(-6.8px) rotate(-45deg)}
+@media(max-width:980px){
+  .navburger{display:flex}
+  nav.top .wrap{position:relative}
+  nav.top.open ul{display:flex!important;flex-direction:column;position:absolute;top:calc(100% + 12px);left:0;right:0;background:rgba(11,11,11,.97);backdrop-filter:blur(14px);border:1px solid rgba(227,195,90,.25);border-radius:18px;padding:10px;margin:0 16px;box-shadow:0 30px 60px rgba(0,0,0,.5);max-height:calc(100vh - 110px);overflow-y:auto}
+  nav.top.open ul a{display:block;font-size:16px!important;padding:13px 14px!important;color:#F4F1EA!important;border-radius:12px;background:none!important}
+  nav.top.open ul a:hover,nav.top.open ul a.on{background:rgba(227,195,90,.12)!important;color:var(--oro-l)!important}
+  nav.top{background:rgba(11,11,11,.9);z-index:250!important}
+  .navburger{position:absolute;right:20px;top:50%;transform:translateY(-50%);z-index:2}
+}
+@media(max-width:760px){table.bench{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap}.code{max-width:100%;overflow-x:auto}}
+html{overflow-x:hidden}
 </style>
 </head>
 <body>
@@ -869,6 +912,7 @@ body.lp-lock{overflow:hidden}
 
 <nav class="top" id="nav">
   <div class="wrap">
+    <button class="navburger" id="navBurger" type="button" aria-label="Menu" style="order:3"><span></span><span></span><span></span></button>
     <div class="brandbox"><i class="logo"></i><small>Proposta 2027</small></div>
     <ul>
       <li><a href="#diagnosi">Diagnosi</a></li>
@@ -1142,11 +1186,20 @@ body.lp-lock{overflow:hidden}
 
     <div class="browser reveal" id="browser">
       <div class="bar"><i></i><i></i><i></i><div class="url">giovannonifuneraria.com</div><span class="fs-dev"><button data-fsdev="desk">Desktop</button><button data-fsdev="mob">Mobile</button></span><button class="fs-close" id="fsClose" aria-label="Esci da schermo intero">✕ Esci</button></div>
+      <div class="s-drawer" id="sDrawer" aria-hidden="true">
+        <div class="sd-top"><i class="logo"></i><button type="button" class="sd-x" aria-label="Chiudi menu">✕</button></div>
+        <nav class="sd-links">
+          <a data-go="fam">La famiglia</a><a data-go="rev">Recensioni</a><a data-go="steps">Cosa fare adesso</a><a data-go="svc">Servizi</a><a data-go="costi">Costi</a><a data-go="sedi">Sedi</a><a data-go="faq">Domande frequenti</a><a data-go="prev">Previdenza</a>
+        </nav>
+        <a class="sd-call" href="tel:+390651600000">Chiama ora · H24 · 06 516 00 000</a>
+        <p class="sd-note">Reperibili 24 ore su 24, anche nei festivi.</p>
+      </div>
       <div class="site" id="site">
         <div class="s-nav">
           <i class="logo" role="img" aria-label="Giovannoni"></i>
           <div class="s-menu"><span>La famiglia</span><span>Recensioni</span><span>Cosa fare adesso</span><span>Servizi</span><span>Costi</span><span>Sedi</span><span>Guide</span><span>Previdenza</span></div>
           <a class="s-call" href="#site"><i></i>06 516 00 000</a>
+          <button class="s-burger" type="button" aria-label="Apri menu"><span></span><span></span><span></span></button>
         </div>
 
         <div class="s-hero">
@@ -1808,6 +1861,7 @@ function makeSky(cv,opt){
   const rnd=(a,b)=>a+Math.random()*(b-a);
   function size(){const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);build();}
   function build(){
+    if(!(W>1&&H>1)){sky=null;return;}
     sky=document.createElement('canvas');sky.width=W;sky.height=H;const s=sky.getContext('2d');
     const g=s.createLinearGradient(0,0,0,H);
     g.addColorStop(0,'#05060a');g.addColorStop(.38,'#141826');g.addColorStop(.62,'#3a2c25');g.addColorStop(.78,'#a66b2e');g.addColorStop(.86,'#e3b062');g.addColorStop(1,'#f3d9a0');
@@ -1851,13 +1905,14 @@ function makeSky(cv,opt){
   }
   let t=0,vis=true;
   function frame(){
-    if(vis){t+=.016;ctx.clearRect(0,0,W,H);const sh=opt.parallax?window.__py||0:0;ctx.drawImage(sky,0,sh*.05);
+    if(vis&&sky){t+=.016;ctx.clearRect(0,0,W,H);const sh=opt.parallax?window.__py||0:0;ctx.drawImage(sky,0,sh*.05);
       parts.forEach(p=>{p.y-=p.v;p.x+=Math.sin(t+p.p)*.25;if(p.y<H*.2){p.y=H;p.x=rnd(0,W)}
         const al=p.a*(.6+.4*Math.sin(t*2+p.p));ctx.beginPath();ctx.fillStyle=`rgba(255,214,140,${al})`;ctx.shadowColor='rgba(255,200,120,.9)';ctx.shadowBlur=8;ctx.arc(p.x,p.y,p.r,0,7);ctx.fill();});
       ctx.shadowBlur=0;}
     if(!RM)requestAnimationFrame(frame);
   }
   size();addEventListener('resize',()=>{size();if(RM)frame()});
+  if(window.ResizeObserver)new ResizeObserver(()=>{const r=cv.getBoundingClientRect();if(Math.abs(r.width-W)>2||Math.abs(r.height-H)>2)size()}).observe(cv);
   new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(cv);
   frame();
 }
@@ -2114,6 +2169,29 @@ document.querySelectorAll('.gnav button').forEach(b=>b.addEventListener('click',
   addEventListener('keydown',e=>{if(e.key==='Escape'&&L.classList.contains('fs'))exit()});
   addEventListener('resize',fit);
   document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&L.classList.contains('fs'))exit()});
+})();
+
+// ---------- MENU MOBILE (presentazione + sito) ----------
+(function(){
+  const nav=document.getElementById('nav'),nb=document.getElementById('navBurger');
+  if(nav&&nb){nb.addEventListener('click',()=>nav.classList.toggle('open'));nav.querySelectorAll('ul a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));}
+  const site=document.getElementById('site'),dr=document.getElementById('sDrawer'),br=document.getElementById('browser');if(!site||!dr)return;
+  const sec=el=>el?(el.closest('.s-sec,.fam,.grevs')||el):null;
+  const T={fam:()=>document.getElementById('fam'),rev:()=>document.getElementById('grevs'),steps:()=>sec(site.querySelector('.steps')),svc:()=>sec(document.getElementById('svx')),
+    costi:()=>{const b=document.querySelector('#faqCats [data-c="costi"]');b&&b.click();return sec(document.getElementById('faqCats'))},
+    faq:()=>sec(document.getElementById('faqCats')),sedi:()=>sec(document.getElementById('mapx')),
+    prev:()=>{const b=document.querySelector('#svx .svx-list button[data-i="4"]');b&&b.click();return sec(document.getElementById('svx'))},guide:()=>sec(site.querySelector('.steps'))};
+  function go(k){const el=T[k]&&T[k]();if(!el)return;let y=0,n=el;while(n&&n!==site){y+=n.offsetTop;n=n.offsetParent;if(n&&!site.contains(n))break}
+    const navH=(site.querySelector('.s-nav')||{}).offsetHeight||0;site.scrollTo({top:Math.max(0,el.getBoundingClientRect().top-site.getBoundingClientRect().top+site.scrollTop-navH+2),behavior:'smooth'});}
+  function open(){dr.classList.add('open');dr.setAttribute('aria-hidden','false');dr.querySelectorAll('.sd-links a').forEach((a,i)=>a.style.transitionDelay=(60+i*40)+'ms')}
+  function close(){dr.classList.remove('open');dr.setAttribute('aria-hidden','true');dr.querySelectorAll('.sd-links a').forEach(a=>a.style.transitionDelay='0ms')}
+  site.querySelector('.s-burger').addEventListener('click',open);dr.querySelector('.sd-x').addEventListener('click',close);
+  dr.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=>{close();setTimeout(()=>go(a.dataset.go),250)}));
+  const MAP={'La famiglia':'fam','Recensioni':'rev','Cosa fare adesso':'steps','Servizi':'svc','Costi':'costi','Sedi':'sedi','Guide':'guide','Previdenza':'prev'};
+  site.querySelectorAll('.s-menu span').forEach(sp=>sp.addEventListener('click',()=>go(MAP[sp.textContent.trim()])));
+  // su telefono la preview parte in versione mobile
+  if(innerWidth<760){const b=document.querySelector('.device-switch button[data-dev="mob"]');b&&b.click();}
+  const dev=document.querySelectorAll('.device-switch button');dev.forEach(b=>b.addEventListener('click',close));
 })();
 </script>
 </body>
