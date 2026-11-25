@@ -778,8 +778,11 @@ footer.f{padding:40px 0;border-top:1px solid var(--linea-d);font-size:12.5px;col
 .mobile .fam-head{grid-template-columns:1fr}
 .mobile .fam-head h2{font-size:36px}
 .mobile .fam-gen{text-align:left}.mobile .fam-gen b{font-size:64px}
-.mobile .fam-photo{aspect-ratio:4/5}
-.mobile .fam-photo .img{background-position:52% center}
+.mobile .fam-photo{aspect-ratio:16/10;border-radius:16px}
+.mobile .fam-photo .img{background-position:center 22%;transform:none}
+.mobile .fam-photo .frame{inset:8px;border-radius:10px}
+.mobile .fam-photo .frame::before,.mobile .fam-photo .frame::after{width:18px;height:18px}
+.mobile .fam-names button b{font-size:17px}
 .mobile .fam-card,.mobile .fam-dot,.mobile .fam-hint{display:none}
 .mobile .fam-names{grid-template-columns:1fr 1fr}
 .mobile .fam-time{grid-template-columns:1fr 1fr;row-gap:20px}
